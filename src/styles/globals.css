@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+/* 
+  SMILING JOURNEY DESIGN SYSTEM & BRAND TOKENS
+  Inspired by Sanity.io tech aesthetic: high contrast, geometric precision,
+  monospaced metadata, structured grid borders, and rich brand identity.
+*/
+
+:root {
+  /* Brand Color Tokens (per design.md brief) */
+  --color-primary: #F97316;       /* Primary Orange */
+  --color-primary-hover: #EA580C; /* Deep Orange */
+  --color-accent: #FBBF24;        /* Sunrise Yellow */
+  --color-brand-dark: #581C57;    /* Deep Plum */
+  --color-ink: #102A43;           /* Midnight Navy */
+  --color-ink-light: #334E68;     /* Slate Navy Muted */
+  --color-sky: #38BDF8;           /* Sky Blue */
+  --color-background: #FFFDF8;    /* Warm Off-White Surface */
+  --color-surface: #FFFFFF;       /* Crisp White Card Surface */
+  --color-soft-orange: #FFF3E6;   /* Warm Highlight Tint */
+  --color-soft-blue: #EAF7FF;     /* Ice Blue Tint */
+  --color-border: #E7E2DA;        /* Soft Divider Border */
+  --color-border-sharp: #102A43;  /* High-Contrast Technical Grid Border */
+
+  /* Typography Families */
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Core Reset & Viewport Constraints */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip; /* Fixes horizontal scroll breakdowns across all devices */
+  min-height: 100vh;
+}
+
+/* Image & Media Safety Constraints */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* WCAG Accessible Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* 
+  SANITY.IO DESIGN SYSTEM UTILITY CLASSES 
+*/
+
+/* 1. Layout Container - Mobile-First Fluid Grid (1280px max with generous padding) */
+.container-page {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* 2. Sanity.io Structured Grid & Technical Backgrounds */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(16, 42, 67, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 42, 67, 0.05) 1px, transparent 1px);
+}
+
+.bg-grid-pattern-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(16, 42, 67, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* 3. Sanity.io Technical Metadata Tags & Monospaced Badges */
+.badge-mono {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-ink-light);
+  line-height: 1;
+}
+
+.badge-mono-orange {
+  border-color: rgba(249, 115, 22, 0.3);
+  background-color: var(--color-soft-orange);
+  color: var(--color-primary);
+}
+
+.badge-mono-dark {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+/* 4. Sharp Geometric Card Container (Sanity border treatment) */
+.sanity-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sanity-card:hover {
+  border-color: rgba(16, 42, 67, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(16, 42, 67, 0.08);
+  transform: translateY(-2px);
+}
+
+.sanity-card-sharp {
+  border: 1px solid var(--color-ink);
+  box-shadow: 4px 4px 0px 0px var(--color-ink);
+  border-radius: 6px;
+}
+
+/* 5. Brand Buttons & Micro-Interactions */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.35rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.925rem;
+  border-radius: 6px; /* Crisp geometric corners like Sanity */
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #EA580C 0%, #D97706 100%);
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-navy {
+  background-color: var(--color-ink);
+  color: #FFFFFF;
+}
+
+.btn-navy:hover {
+  background-color: #0D2238;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-ink);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-ink);
+  background-color: #FAF9F6;
+  color: var(--color-ink);
+}
+
+.btn-outline-dark {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.btn-outline-dark:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
+}
+
+/* 6. Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  color: inherit;
+  margin: 0;
+}
+
+.heading-display {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.heading-lg {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.heading-md {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.2;
+}
+
+/* 7. Form Controls */
+.field {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.field::placeholder {
+  color: #9FB3C8;
+}
+
+.error-text {
+  color: #DC2626;
+  font-size: 0.825rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+/* 8. Utility Helpers */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+  transform: translateY(-200%);
+  background-color: var(--color-ink);
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 9. Typewriter Text Cursor Animation */
+.typewriter-cursor::after {
+  content: '|';
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-left: 2px;
+  animation: typewriterBlink 0.8s infinite;
+}
+
+@keyframes typewriterBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Framer Motion / Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

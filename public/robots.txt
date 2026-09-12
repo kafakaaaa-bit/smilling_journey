@@ -1,0 +1,5 @@
+# Smiling Journey Search Engine Crawler Guidance
+User-agent: *
+Allow: /
+
+Sitemap: https://smilingjourney.com/sitemap.xml
